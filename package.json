@@ -1,0 +1,48 @@
+{
+  "name": "@klaro/sdk",
+  "version": "0.1.0",
+  "description": "Official Node.js SDK for Klaro - Track API requests and LLM costs per customer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "klaro",
+    "api-monitoring",
+    "llm",
+    "cost-tracking",
+    "openai",
+    "observability"
+  ],
+  "author": "Klaro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Koploseus/klaro-sdk"
+  },
+  "dependencies": {
+    "openai": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/express": "^4.17.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0"
+  },
+  "peerDependencies": {
+    "express": "^4.0.0 || ^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
