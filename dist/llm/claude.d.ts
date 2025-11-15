@@ -51,7 +51,7 @@ export declare class KlaroClaude {
         create: (params: any) => Promise<Anthropic.Messages.Message>;
     };
     /**
-     * Simple PII detection (basic patterns)
+     * Detailed PII detection (returns categories and count)
      */
     private detectPII;
     /**

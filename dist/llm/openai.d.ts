@@ -54,7 +54,7 @@ export declare class KlaroOpenAI {
         };
     };
     /**
-     * Simple PII detection (basic patterns)
+     * Detailed PII detection (returns categories and count)
      */
     private detectPII;
     /**

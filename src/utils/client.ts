@@ -28,6 +28,8 @@ export interface LLMRequestData {
   latency: number;
   timestamp: string;
   piiDetected?: boolean;
+  piiCategories?: string[];
+  piiCount?: number;
 }
 
 /**

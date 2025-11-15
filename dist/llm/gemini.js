@@ -92,7 +92,14 @@ class KlaroGemini {
                         cost,
                         latency,
                         timestamp: new Date().toISOString(),
-                        piiDetected: this.enablePIIDetection ? this.detectPII(response) : undefined,
+                        ...(this.enablePIIDetection ? (() => {
+                            const piiResult = this.detectPII(response);
+                            return {
+                                piiDetected: piiResult.detected,
+                                piiCategories: piiResult.categories,
+                                piiCount: piiResult.count
+                            };
+                        })() : {}),
                     }).catch(err => {
                         console.error('[Klaro SDK] Error sending LLM data:', err);
                     });
@@ -110,18 +117,31 @@ class KlaroGemini {
         };
     }
     /**
-     * Simple PII detection (basic patterns)
+     * Detailed PII detection (returns categories and count)
      */
     detectPII(response) {
         const text = response.text() || '';
-        // Basic regex patterns for common PII
+        // PII patterns with category names
         const patterns = [
-            /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/, // Email
-            /\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/, // Phone
-            /\b\d{3}-\d{2}-\d{4}\b/, // SSN
-            /\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b/, // Credit card
+            { name: 'email', regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g },
+            { name: 'phone', regex: /\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/g },
+            { name: 'ssn', regex: /\b\d{3}-\d{2}-\d{4}\b/g },
+            { name: 'credit_card', regex: /\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b/g },
         ];
-        return patterns.some(pattern => pattern.test(text));
+        const categories = [];
+        let totalCount = 0;
+        for (const pattern of patterns) {
+            const matches = text.match(pattern.regex);
+            if (matches && matches.length > 0) {
+                categories.push(pattern.name);
+                totalCount += matches.length;
+            }
+        }
+        return {
+            detected: categories.length > 0,
+            categories,
+            count: totalCount
+        };
     }
     /**
      * Access underlying GoogleGenerativeAI client for advanced use cases

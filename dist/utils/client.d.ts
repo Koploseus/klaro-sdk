@@ -23,6 +23,8 @@ export interface LLMRequestData {
     latency: number;
     timestamp: string;
     piiDetected?: boolean;
+    piiCategories?: string[];
+    piiCount?: number;
 }
 /**
  * HTTP client for sending data to Klaro backend

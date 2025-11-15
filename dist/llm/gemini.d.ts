@@ -59,7 +59,7 @@ export declare class KlaroGemini {
         raw: import("@google/generative-ai").GenerativeModel;
     };
     /**
-     * Simple PII detection (basic patterns)
+     * Detailed PII detection (returns categories and count)
      */
     private detectPII;
     /**
