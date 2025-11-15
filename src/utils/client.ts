@@ -20,7 +20,7 @@ export interface RequestData {
 
 export interface LLMRequestData {
   customerId: string;
-  provider: 'openai' | 'anthropic';
+  provider: 'openai' | 'anthropic' | 'google';
   model: string;
   inputTokens: number;
   outputTokens: number;

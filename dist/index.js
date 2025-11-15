@@ -5,11 +5,15 @@
  * Track API requests and LLM costs per customer
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Batcher = exports.KlaroClient = exports.KlaroOpenAI = exports.klaroMiddleware = void 0;
+exports.Batcher = exports.KlaroClient = exports.KlaroGemini = exports.KlaroClaude = exports.KlaroOpenAI = exports.klaroMiddleware = void 0;
 var express_1 = require("./middleware/express");
 Object.defineProperty(exports, "klaroMiddleware", { enumerable: true, get: function () { return express_1.klaroMiddleware; } });
 var openai_1 = require("./llm/openai");
 Object.defineProperty(exports, "KlaroOpenAI", { enumerable: true, get: function () { return openai_1.KlaroOpenAI; } });
+var claude_1 = require("./llm/claude");
+Object.defineProperty(exports, "KlaroClaude", { enumerable: true, get: function () { return claude_1.KlaroClaude; } });
+var gemini_1 = require("./llm/gemini");
+Object.defineProperty(exports, "KlaroGemini", { enumerable: true, get: function () { return gemini_1.KlaroGemini; } });
 var client_1 = require("./utils/client");
 Object.defineProperty(exports, "KlaroClient", { enumerable: true, get: function () { return client_1.KlaroClient; } });
 var batcher_1 = require("./utils/batcher");

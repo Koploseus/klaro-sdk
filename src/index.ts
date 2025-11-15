@@ -6,6 +6,8 @@
 
 export { klaroMiddleware, KlaroMiddlewareConfig } from './middleware/express';
 export { KlaroOpenAI, KlaroOpenAIConfig } from './llm/openai';
+export { KlaroClaude, KlaroClaudeConfig } from './llm/claude';
+export { KlaroGemini, KlaroGeminiConfig } from './llm/gemini';
 export { KlaroClient, KlaroClientConfig, RequestData, LLMRequestData } from './utils/client';
 export { Batcher, BatcherConfig } from './utils/batcher';
 
