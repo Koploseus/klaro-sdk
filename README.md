@@ -283,3 +283,20 @@ app.use(klaroMiddleware({
 ## License
 
 MIT
+
+---
+
+## 📚 Documentation
+
+For complete documentation, see:
+
+- **[Technical Documentation](./docs/klaro-technical-documentation.md)** - API reference, architecture, data models
+- **[User Guide](./docs/klaro-user-guide.md)** - Quickstart, integration guides, troubleshooting
+- **[Code Examples](./docs/klaro-code-examples.md)** - Real-world examples and use cases
+
+### Architecture Diagrams
+
+- [System Architecture](./docs/klaro-architecture-diagram.png)
+- [Data Flow](./docs/klaro-data-flow-diagram.png)
+- [Authentication Flow](./docs/klaro-auth-flow-diagram.png)
+
